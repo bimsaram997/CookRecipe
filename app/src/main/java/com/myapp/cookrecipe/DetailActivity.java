@@ -22,13 +22,13 @@ public class DetailActivity extends AppCompatActivity {
 
         foodDescription =  (TextView)findViewById(R.id.txtDescription);
         foodImage = (ImageView)findViewById(R.id.ivImage2);
-        foodTitle  = (TextView)findViewById(R.id.txtLink);
+
 
 
         Bundle mBundle = getIntent().getExtras();
         if (mBundle != null){
             foodDescription.setText(mBundle.getString("Description"));
-            foodTitle.setText(mBundle.getString("Link"));
+
             //foodImage.setImageResource(mBundle.getInt("Image"));
             Glide.with(this).load(mBundle.getString("Image")).into(foodImage);
 
