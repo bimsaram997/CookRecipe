@@ -4,15 +4,18 @@ public class FoodData {
     private  String itemName;
     private String itemDescription;
     private String itemPrice;
-    private int itemImage;
+    private String itemImage;
     private String itemLink;
-    public FoodData(String itemName, String itemDescription, String itemPrice,  String itemLink,int itemImage) {
+    public FoodData(String itemName, String itemDescription, String itemPrice,  String itemLink,String itemImage) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.itemPrice = itemPrice;
         this.itemImage = itemImage;
         this.itemLink = itemLink;
     }
+    public FoodData(){}
+
+
 
     public String getItemName() {
         return itemName;
@@ -26,7 +29,7 @@ public class FoodData {
         return itemPrice;
     }
 
-    public int getItemImage() {
+    public String getItemImage() {
         return itemImage;
     }
 

@@ -1,6 +1,7 @@
 package com.myapp.cookrecipe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
 
 import java.util.List;
 
@@ -33,11 +37,26 @@ public class MyAdapter extends RecyclerView.Adapter<FoodViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder foodViewHolder, int i) {
 
-        foodViewHolder.imageView.setImageResource(myFoodList.get(i).getItemImage());
+
+       Glide.with(mContext)
+                .load(myFoodList.get(i).getItemImage())
+               .into(foodViewHolder.imageView);
+
+        //foodViewHolder.imageView.setImageResource(myFoodList.get(i).getItemImage());
         foodViewHolder.mTitle.setText(myFoodList.get(i).getItemName());
         foodViewHolder.mDescription.setText(myFoodList.get(i).getItemDescription());
         foodViewHolder.mPrice.setText(myFoodList.get(i).getItemPrice());
         foodViewHolder.mLink.setText(myFoodList.get(i).getItemLink());
+
+        foodViewHolder.mCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,DetailActivity.class);
+                intent.putExtra("Image", myFoodList.get(foodViewHolder.getAdapterPosition()).getItemImage());
+                intent.putExtra("Description", myFoodList.get(foodViewHolder.getAdapterPosition()).getItemDescription());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

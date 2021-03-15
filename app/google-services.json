@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "241938836574",
+    "firebase_url": "https://cookrecipe-8ed0c-default-rtdb.firebaseio.com",
+    "project_id": "cookrecipe-8ed0c",
+    "storage_bucket": "cookrecipe-8ed0c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241938836574:android:dc9ea4a961debe29add8cf",
+        "android_client_info": {
+          "package_name": "com.myapp.cookrecipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241938836574-3puq0gklp4okvod23mkan5a6mejqd943.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe313sY2KBXvUPe0PbXSdcSoLzuD4_TnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241938836574-3puq0gklp4okvod23mkan5a6mejqd943.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
