@@ -7,7 +7,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/myCardView"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         app:cardElevation="3dp"
         android:layout_margin="4dp"
         app:cardUseCompatPadding="true">
@@ -74,15 +74,45 @@
                 </LinearLayout>
 
             </LinearLayout>
-
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_margin="5dp"
-                android:text="https://youtu.be/WTUz9fOVpiI"
-                android:id="@+id/tvLink"
-                android:textAlignment="center"
-                android:textSize="15sp" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="https://youtu.be/WTUz9fOVpiI"
+                    android:textAlignment="center"
+                    android:textSize="15sp" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar1"
+                    android:layout_below="@id/tvLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:layout_alignParentLeft="true"
+                    android:numStars="5"
+                    android:stepSize="0.5" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/txtRate"
+                    android:layout_below="@id/tvLink"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="57dp"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:text="Rate" />
+
+            </RelativeLayout>
+
+
+
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

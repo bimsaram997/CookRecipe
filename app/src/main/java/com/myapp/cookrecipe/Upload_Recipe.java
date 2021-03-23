@@ -80,7 +80,7 @@ public class Upload_Recipe extends AppCompatActivity {
                 uploadRecipe();
                 alert();
 
-                Toast.makeText(Upload_Recipe.this, "Recipe Uploaded", Toast.LENGTH_SHORT);
+                Toast.makeText(Upload_Recipe.this, "Recipe Uploaded", Toast.LENGTH_SHORT).show();
 
             }
         });

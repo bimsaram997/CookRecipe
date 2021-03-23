@@ -12,6 +12,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     List<FoodData> myFoodList;
     FoodData mFoodData;
     MyAdapter myAdapter;
+    TextView txtRating;
+    RatingBar ratingBar;
 
 
     private DatabaseReference databaseReference;
@@ -38,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
         mRecyclerView = (RecyclerView)findViewById(R.id.recycleView);
         GridLayoutManager gridLayoutManager =  new GridLayoutManager(MainActivity.this,1);
