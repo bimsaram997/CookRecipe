@@ -2,11 +2,16 @@ package com.myapp.cookrecipe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +19,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
     MyAdapter myAdapter;
     TextView txtRating;
     RatingBar ratingBar;
-
-
+    public static final String MESSAGE =  "message";
     private DatabaseReference databaseReference;
     private ValueEventListener eventListener;
     ProgressDialog progressDialog;
     EditText txt_Search;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +125,19 @@ public class MainActivity extends AppCompatActivity {
         myAdapter.filteredList(filterList);
 
     }
+
+    public void second(View view){
+        TextView txtLink  = (TextView) view;
+        String msg = txtLink.getText().toString();
+        System.err.println("Youtube link:"+msg);
+       // Uri uri = Uri.parse(msg);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(msg));
+        intent.setPackage("com.google.android.youtube");
+        startActivity(intent);
+
+    }
+
 
 
     public void btn_uploadActivity(View view) {

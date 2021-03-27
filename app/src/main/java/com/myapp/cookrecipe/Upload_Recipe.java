@@ -3,8 +3,11 @@ package com.myapp.cookrecipe;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.AlertDialog;
+import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -39,7 +42,6 @@ public class Upload_Recipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload__recipe);
         recipeImage = (ImageView)findViewById(R.id.iv_foodImage);
-
         txt_name = (EditText)findViewById(R.id.txt_recipe_name);
         txt_description = (EditText)findViewById(R.id.text_description);
         txt_price = (EditText)findViewById(R.id.text_price);
@@ -52,18 +54,14 @@ public class Upload_Recipe extends AppCompatActivity {
         Intent photoPicker = new Intent(Intent.ACTION_PICK);
         photoPicker.setType("image/*");
         startActivityForResult(photoPicker, 1);
-
-
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK){
-
             uri = data.getData();
             recipeImage.setImageURI(uri);
-
         }else Toast.makeText(this, "You haven't pick image", Toast.LENGTH_SHORT).show();
     }
 
@@ -72,22 +70,18 @@ public class Upload_Recipe extends AppCompatActivity {
         storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                 Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                 while (!uriTask.isComplete());
                 Uri urlImage = uriTask.getResult();
                 imageUrl=  urlImage.toString();
                 uploadRecipe();
                 alert();
-
                 Toast.makeText(Upload_Recipe.this, "Recipe Uploaded", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
 
     public void btnUploadRecipe(View view) {
-
         uploadImage();
     }
     public void alert(){
@@ -97,7 +91,6 @@ public class Upload_Recipe extends AppCompatActivity {
     public void uploadRecipe(){
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Recipe uploaded...");
-
         FoodData foodData = new FoodData(
                 txt_name.getText().toString(),
                 txt_description.getText().toString(),
@@ -107,7 +100,6 @@ public class Upload_Recipe extends AppCompatActivity {
         );
 
         String myCurrentDateTime = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-
         FirebaseDatabase.getInstance().getReference("cookrecipe-8ed0c-default-rtdb").child(myCurrentDateTime).setValue(foodData).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -117,7 +109,6 @@ public class Upload_Recipe extends AppCompatActivity {
                     Toast.makeText(Upload_Recipe.this, "Recipe Uploaded", Toast.LENGTH_SHORT);
                     progressDialog.dismiss();
                     finish();
-
                 }
 
             }
@@ -129,4 +120,7 @@ public class Upload_Recipe extends AppCompatActivity {
             }
         });
     }
+
+
+
 }
